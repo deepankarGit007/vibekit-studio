@@ -11,7 +11,7 @@ if (!connectionString) {
 }
 
 // Initialize the postgres client
-// Used standard configuration optimized for Supabase connection pooling
-const client = postgres(connectionString, { prepare: false });
+// Enforce SSL since Supabase requires it for external cloud connections unconditionally
+const client = postgres(connectionString, { prepare: false, ssl: 'require' });
 
 export const db = drizzle(client, { schema });

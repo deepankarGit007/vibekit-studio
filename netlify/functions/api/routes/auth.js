@@ -41,7 +41,7 @@ router.post("/signup", async (req, res) => {
     res.json({ message: "Sign up successful", user: { id: user.id, email: user.email } });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: "Internal server error" });
+    res.status(500).json({ error: `Server error: ${err.message}` });
   }
 });
 
@@ -69,7 +69,7 @@ router.post("/login", async (req, res) => {
     res.json({ message: "Login successful", user: { id: user.id, email: user.email } });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: "Internal server error" });
+    res.status(500).json({ error: `Server error: ${err.message}` });
   }
 });
 
